@@ -1,0 +1,548 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light only"><meta name="description" content="Pin & Place: home organising in Hyderabad with instant pricing, travel included, and a 30-day guarantee."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%232a1d17%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-size=%2216%22 font-family=%22Georgia%22 fill=%22%23f8f3ee%22 text-anchor=%22middle%22%3EP%26amp;P%3C/text%3E%3C/svg%3E">
+<title>Pin &amp; Place Hyderabad</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: an organiser's inventory book. Light nude paper, a sticky numbered "drawer index" on the left,
+   label-maker tape for headings, ruled ledgers instead of cards, and the quote printed as a till receipt.
+   Single light theme by design: the page never follows the device's dark mode. */
+:root{
+  --paper:#f8f3ee;       /* light nude paper */
+  --paper-2:#f1e8e0;     /* deeper nude band */
+  --ink:#2a1d17;         /* espresso */
+  --ink-soft:#6e5d53;
+  --rule:#d9c9bb;
+  --tape:#2a1d17;        /* label tape */
+  --tape-ink:#f8f3ee;
+  --mocha:#6a4636;
+  --rose:#e7c9bb;        /* rose nude highlight */
+  --caramel:#b98a66;
+  --wa:#1e9e57;
+  --font-display:"Gloock","Georgia",serif;
+  --font-body:"Figtree","Avenir",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;margin:0}
+.page{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:0 96px;display:grid;grid-template-columns:200px 1fr;gap:48px}
+@media (max-width:860px){.page{grid-template-columns:1fr;gap:0}}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.05;text-wrap:balance;margin:0;letter-spacing:-.005em}
+h1{font-size:clamp(2.6rem,7.5vw,5rem)}
+h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:var(--mocha)}
+em{font-style:italic}
+/* label tape */
+.tape{display:inline-block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;background:var(--tape);color:var(--tape-ink);padding:6px 12px 5px;transform:rotate(-1.2deg);box-shadow:2px 2px 0 var(--rose)}
+.tape.alt{background:var(--rose);color:var(--ink);box-shadow:2px 2px 0 var(--tape)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:4px;font-weight:700;text-decoration:none;font-size:1rem;border:1.5px solid var(--ink);cursor:pointer;font-family:var(--font-body);line-height:1.2;background:var(--ink);color:var(--paper)}
+.btn-wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn:focus-visible{outline:3px solid var(--caramel);outline-offset:2px}
+.btn svg{width:18px;height:18px;flex:none}
+/* index rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-block:28px;display:grid;gap:22px}
+@media (max-width:860px){.rail{position:static;padding-block:20px 0}}
+.brand{font-family:var(--font-display);font-size:1.5rem;text-decoration:none;color:var(--ink);line-height:1.1}
+.brand small{display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
+.index{list-style:none;margin:0;padding:0;display:grid;gap:2px;border-top:1.5px solid var(--ink)}
+.index li a{display:grid;grid-template-columns:30px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);font-size:.95rem;font-weight:500}
+.index li a span:first-child{font-family:var(--font-mono);font-size:.78rem;color:var(--caramel);font-weight:700;padding-top:3px}
+.index li a:hover,.index li a:focus-visible{background:var(--paper-2)}
+@media (max-width:860px){.index{display:flex;flex-wrap:wrap;gap:0 14px;border-top:0}.index li a{border-bottom:0;padding:4px 0;grid-template-columns:auto auto;font-size:.88rem}}
+.rail .wa-small{font-size:.9rem;padding:10px 14px}
+@media (max-width:860px){.rail .wa-small{display:none}}
+/* main */
+main{min-width:0}
+section{padding-block:64px;border-top:1.5px solid var(--ink)}
+section:first-child{border-top:0;padding-top:28px}
+@media (max-width:860px){section{padding-block:44px}}
+.num{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--caramel);font-weight:700;display:block;margin-bottom:14px}
+.lead{font-size:1.2rem;color:var(--ink-soft);max-width:40ch}
+/* hero */
+.hero h1{margin-top:18px;max-width:14ch}
+.hero h1 em{color:var(--mocha)}
+.hero .lead{margin-top:22px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-top:48px}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr;gap:28px}}
+.claims{display:grid;border-top:1.5px solid var(--ink)}
+.claims div{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:.98rem}
+.claims div span:first-child{font-family:var(--font-mono);color:var(--caramel);font-weight:700;font-size:.8rem;padding-top:4px}
+.claims b{font-weight:700}
+/* before/after */
+.ba{position:relative;max-width:100%;aspect-ratio:4/3;overflow:hidden;border:1.5px solid var(--ink);background:var(--paper-2);user-select:none;touch-action:none}
+.ba svg{position:absolute;inset:0;width:100%;height:100%}
+.ba .after{clip-path:inset(0 0 0 var(--cut,50%))}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;background:var(--ink);transform:translateX(-50%)}
+.ba .knob{position:absolute;top:50%;left:var(--cut,50%);transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:1rem}
+.ba .lbl{position:absolute;top:10px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:4px 8px;background:var(--ink);color:var(--paper)}
+.ba .lbl.l{left:10px}.ba .lbl.r{right:10px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize}
+.ba-cap{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;color:var(--ink-soft);margin-top:10px}
+/* ledger (services) */
+.ledger{border-top:1.5px solid var(--ink);margin-top:32px}
+.row{display:grid;grid-template-columns:52px 1.1fr 1.6fr auto;gap:20px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:start}
+@media (max-width:760px){.row{grid-template-columns:40px 1fr;gap:8px 14px}.row .desc{grid-column:2}.row .price{grid-column:2}}
+.row .n{font-family:var(--font-mono);font-size:.8rem;color:var(--caramel);font-weight:700;padding-top:6px}
+.row h3{font-size:1.5rem}
+.row .desc{color:var(--ink-soft);font-size:.98rem;max-width:48ch}
+.row .price{font-family:var(--font-mono);font-weight:700;white-space:nowrap;padding-top:6px;font-size:.95rem}
+/* receipt */
+.quote{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;margin-top:36px;align-items:start}
+@media (max-width:860px){.quote{grid-template-columns:1fr;gap:28px}}
+.qform{display:grid;gap:22px}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:10px;min-width:0}
+legend{font-weight:700;padding:0;margin-bottom:8px;font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-block;padding:9px 14px;border:1.5px solid var(--ink);background:transparent;font-weight:600;font-size:.93rem;cursor:pointer;border-radius:3px}
+.chip input:checked + span{background:var(--ink);color:var(--paper)}
+.chip input:focus-visible + span{outline:3px solid var(--caramel);outline-offset:2px}
+.chip small{font-weight:500;opacity:.75;font-family:var(--font-mono);font-size:.75rem}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:40px;height:40px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:1.3rem;cursor:pointer;font-family:inherit;border-radius:3px}
+.stepper button:focus-visible{outline:3px solid var(--caramel)}
+.stepper output{font-family:var(--font-mono);font-weight:700;font-size:1.3rem;min-width:2ch;text-align:center}
+.stepper .hint{font-size:.9rem;color:var(--ink-soft)}
+.receipt{background:#fffdf9;color:#2a1d17;border:1px solid var(--rule);padding:26px 24px 30px;font-family:var(--font-mono);font-size:.88rem;position:relative;box-shadow:0 14px 30px rgba(42,29,23,.12)}
+.receipt::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(135deg,transparent 50%,#fffdf9 50%) 0 0/14px 14px,linear-gradient(45deg,#fffdf9 50%,transparent 50%) 0 0/14px 14px}
+.receipt .head{text-align:center;border-bottom:1px dashed var(--rule);padding-bottom:12px;margin-bottom:12px;display:grid;gap:2px}
+.receipt .head b{font-size:1rem;letter-spacing:.1em}
+.receipt .lines div{display:flex;justify-content:space-between;gap:12px;padding:5px 0}
+.receipt .lines div span:last-child{white-space:nowrap}
+.receipt .lines .inc{color:var(--mocha);font-weight:700}
+.receipt .total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--rule);border-bottom:1px dashed var(--rule);margin-top:10px;padding:12px 0;font-weight:700}
+.receipt .total span:last-child{font-size:1.6rem}
+.receipt .meta{color:var(--ink-soft);font-size:.78rem;margin-top:10px;line-height:1.5}
+.receipt .btns{display:grid;gap:8px;margin-top:16px;font-family:var(--font-body)}
+.receipt .btns .btn{font-size:.95rem}
+/* promise */
+.promise{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--ink);margin-top:32px}
+@media (max-width:760px){.promise{grid-template-columns:1fr}}
+.promise div{padding:30px 28px;display:grid;gap:12px;align-content:start}
+.promise div + div{border-left:1.5px solid var(--ink)}
+@media (max-width:760px){.promise div + div{border-left:0;border-top:1.5px solid var(--ink)}}
+.promise div:first-child{background:var(--rose)}
+.promise h3{font-size:1.9rem}
+.promise p{color:var(--ink-soft)}
+.promise div:first-child p{color:var(--ink)}
+/* quiz */
+.quiz{display:grid;gap:22px;margin-top:32px;max-width:720px}
+.q p{font-weight:700;margin-bottom:10px}
+.quiz-out{display:none;border:1.5px solid var(--ink);padding:22px;gap:10px;background:var(--paper-2)}
+.quiz-out.show{display:grid}
+.quiz-out b{font-family:var(--font-display);font-weight:400;font-size:1.6rem;line-height:1.1}
+/* founding */
+.founding{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center;margin-top:32px;background:var(--ink);color:var(--paper);padding:36px}
+@media (max-width:760px){.founding{grid-template-columns:1fr;padding:26px}}
+.founding h2{color:inherit}
+.founding p{opacity:.85;margin-top:14px;max-width:52ch}
+.founding .slots{border:1px dashed rgba(248,243,238,.4);padding:20px;display:grid;gap:4px;font-family:var(--font-mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.founding .slots b{font-family:var(--font-display);font-size:3.4rem;line-height:1;letter-spacing:0;text-transform:none}
+.founding .btn{margin-top:20px;background:var(--rose);border-color:var(--rose);color:var(--ink)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1.5px solid var(--ink);margin-top:32px}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{padding:22px 18px 22px 0;border-bottom:1px solid var(--rule);display:grid;gap:8px;align-content:start}
+.step .n{font-family:var(--font-mono);font-size:.8rem;color:var(--caramel);font-weight:700}
+.step p{color:var(--ink-soft);font-size:.95rem}
+/* faq */
+.faq{margin-top:28px;border-top:1.5px solid var(--ink)}
+details{border-bottom:1px solid var(--rule);padding-block:16px}
+summary{cursor:pointer;font-family:var(--font-display);font-size:1.25rem;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::after{content:"+";font-family:var(--font-mono);font-size:1.2rem;color:var(--caramel)}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-soft);margin-top:10px;max-width:62ch}
+/* booking */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px}
+@media (max-width:760px){.book{grid-template-columns:1fr}}
+form.bk{display:grid;gap:16px}
+label.f{display:grid;gap:6px;font-size:.92rem;font-weight:600}
+input[type=text],input[type=tel],select,textarea{font:inherit;padding:12px 13px;border:1.5px solid var(--ink);background:#fffdf9;color:var(--ink);width:100%;min-width:0;border-radius:3px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--caramel);outline-offset:1px}
+textarea{min-height:90px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+.contact{display:grid;gap:0;border-top:1.5px solid var(--ink);align-content:start}
+.contact div{padding:18px 0;border-bottom:1px solid var(--rule);display:grid;gap:6px}
+.contact .k{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--caramel);font-weight:700}
+.contact .val{font-family:var(--font-display);font-size:1.5rem;user-select:all;word-break:break-word}
+.contact p{color:var(--ink-soft);font-size:.95rem}
+.copy{font-size:.85rem;padding:7px 12px;justify-self:start}
+.result{display:none;border:1.5px solid var(--ink);padding:18px;gap:12px;background:var(--paper-2)}
+.result.show{display:grid}
+.result pre{white-space:pre-wrap;font-family:var(--font-mono);font-size:.85rem;margin:0;background:#fffdf9;padding:12px;border:1px solid var(--rule)}
+.result .btns{display:flex;flex-wrap:wrap;gap:10px}
+footer{grid-column:1/-1;border-top:1.5px solid var(--ink);padding-block:24px;color:var(--ink-soft);font-size:.85rem;font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
+/* sticky mobile bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--paper);border-top:1.5px solid var(--ink);padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));display:none;gap:10px}
+.bar .btn{flex:1;padding:12px 10px;font-size:.95rem}
+@media (max-width:860px){.bar{display:flex}}
+</style></head><body>
+
+<div class="page">
+  <aside class="rail">
+    <a class="brand" href="#top">Pin &amp; Place<small>Home organising · Hyderabad</small></a>
+    <ol class="index" aria-label="Sections">
+      <li><a href="#top"><span>01</span><span>Start here</span></a></li>
+      <li><a href="#services"><span>02</span><span>Services</span></a></li>
+      <li><a href="#quote"><span>03</span><span>Instant quote</span></a></li>
+      <li><a href="#promise"><span>04</span><span>The promise</span></a></li>
+      <li><a href="#quiz"><span>05</span><span>Clutter check</span></a></li>
+      <li><a href="#founding"><span>06</span><span>Founding offer</span></a></li>
+      <li><a href="#how"><span>07</span><span>How it works</span></a></li>
+      <li><a href="#faq"><span>08</span><span>FAQ</span></a></li>
+      <li><a href="#book"><span>09</span><span>Book</span></a></li>
+    </ol>
+    <a class="btn btn-wa wa-small" id="rail-wa" href="#" target="_blank" rel="noopener">WhatsApp me</a>
+  </aside>
+
+  <main>
+    <section class="hero" id="top">
+      <span class="tape">Drawer 01 · Start here</span>
+      <h1>Every home organiser in Hyderabad says <em>"get a quote".</em> I show you the price.</h1>
+      <p class="lead">A place for everything, pinned down. I come to your home, sort what you own, and set up systems your family will keep. Exact price in ten seconds, travel included, result guaranteed for 30 days.</p>
+      <div class="cta-row">
+        <a class="btn" href="#quote">See my price</a>
+        <a class="btn btn-wa" id="hero-wa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.2-.2-.2-.5-.4z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-grid">
+        <div class="claims">
+          <div><span>a</span><span><b>Prices on the page.</b> No "we'll call you back".</span></div>
+          <div><span>b</span><span><b>30-day fix, free.</b> If a system isn't working, I come back and sort it.</span></div>
+          <div><span>c</span><span><b>Built for Indian homes.</b> Sarees, masala dabbas, pooja shelves, festive storage.</span></div>
+          <div><span>d</span><span><b>Travel inside ORR included.</b> Beyond it, ₹15/km, shown before you book.</span></div>
+        </div>
+        <div>
+          <div class="ba" id="ba" style="--cut:50%">
+            <svg class="before" viewBox="0 0 400 300" aria-hidden="true">
+              <rect width="400" height="300" fill="#e9dccf"/>
+              <rect x="30" y="30" width="340" height="240" rx="4" fill="#d6c4b2"/>
+              <line x1="30" y1="110" x2="370" y2="110" stroke="#b39a85" stroke-width="5"/>
+              <line x1="30" y1="190" x2="370" y2="190" stroke="#b39a85" stroke-width="5"/>
+              <g fill="#8d7260" opacity=".9">
+                <rect x="40" y="55" width="70" height="52" rx="3" transform="rotate(-8 75 81)"/><rect x="105" y="70" width="50" height="38" rx="3" transform="rotate(12 130 89)"/><rect x="160" y="48" width="90" height="60" rx="3" transform="rotate(-4 205 78)"/><rect x="250" y="80" width="60" height="28" rx="3" transform="rotate(20 280 94)"/><rect x="300" y="60" width="60" height="48" rx="3" transform="rotate(-15 330 84)"/>
+                <rect x="45" y="130" width="120" height="58" rx="3" transform="rotate(5 105 159)"/><rect x="150" y="150" width="60" height="38" rx="3" transform="rotate(-18 180 169)"/><rect x="215" y="125" width="140" height="62" rx="3" transform="rotate(3 285 156)"/>
+                <rect x="60" y="215" width="80" height="50" rx="3" transform="rotate(-10 100 240)"/><rect x="135" y="230" width="100" height="36" rx="3" transform="rotate(14 185 248)"/><rect x="240" y="205" width="120" height="60" rx="3" transform="rotate(-6 300 235)"/>
+              </g>
+            </svg>
+            <svg class="after" viewBox="0 0 400 300" aria-hidden="true">
+              <rect width="400" height="300" fill="#f8f3ee"/>
+              <rect x="30" y="30" width="340" height="240" rx="4" fill="#fffdf9" stroke="#2a1d17" stroke-width="3"/>
+              <line x1="30" y1="110" x2="370" y2="110" stroke="#2a1d17" stroke-width="3"/>
+              <line x1="30" y1="190" x2="370" y2="190" stroke="#2a1d17" stroke-width="3"/>
+              <g fill="#e7c9bb">
+                <rect x="44" y="52" width="60" height="50" rx="3"/><rect x="112" y="52" width="60" height="50" rx="3"/><rect x="180" y="52" width="60" height="50" rx="3" fill="#6a4636" opacity=".55"/><rect x="248" y="52" width="60" height="50" rx="3"/><rect x="316" y="52" width="40" height="50" rx="3"/>
+                <rect x="44" y="130" width="96" height="52" rx="3" fill="#6a4636" opacity=".55"/><rect x="148" y="130" width="96" height="52" rx="3"/><rect x="252" y="130" width="104" height="52" rx="3"/>
+                <rect x="44" y="210" width="70" height="52" rx="3"/><rect x="122" y="210" width="70" height="52" rx="3"/><rect x="200" y="210" width="70" height="52" rx="3" fill="#6a4636" opacity=".55"/><rect x="278" y="210" width="78" height="52" rx="3"/>
+              </g>
+              <g fill="#2a1d17" font-family="JetBrains Mono,monospace" font-size="8.5" font-weight="700" letter-spacing="1">
+                <text x="52" y="82">DALS</text><text x="120" y="82">RICE</text><text x="188" y="82" fill="#f8f3ee">MASALA</text><text x="256" y="82">SNACKS</text>
+                <text x="52" y="160" fill="#f8f3ee">DAILY USE</text><text x="156" y="160">BAKING</text><text x="260" y="160">FESTIVE</text>
+                <text x="52" y="240">TEA</text><text x="130" y="240">OILS</text><text x="208" y="240" fill="#f8f3ee">KIDS</text><text x="286" y="240">BACKUP</text>
+              </g>
+            </svg>
+            <span class="lbl l">Before</span><span class="lbl r">After</span>
+            <div class="handle"></div><div class="knob">⇔</div>
+            <input type="range" min="0" max="100" value="50" id="ba-range" aria-label="Drag to compare before and after">
+          </div>
+          <p class="ba-cap">DRAG TO COMPARE · REAL PHOTOS FROM SESSIONS GO HERE</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <span class="tape">Drawer 02 · Services</span>
+      <h2 style="margin-top:18px">Organising that understands how an Indian home runs</h2>
+      <p class="lead" style="margin-top:16px">Every session includes a declutter pass (keep / donate / discard), labelled storage, and a one-page routine so it stays tidy. Donations go to a local NGO; I do the drop-off.</p>
+      <div class="ledger">
+        <div class="row"><span class="n">2.1</span><h3>Wardrobe &amp; closet</h3><p class="desc">Sarees stored flat or rolled so the zari doesn't crack. Festive wear separated from daily. Kids' clothes by size, not by pile.</p><span class="price">from ₹3,499 / wardrobe</span></div>
+        <div class="row"><span class="n">2.2</span><h3>Kitchen &amp; pantry</h3><p class="desc">Dals, rice and atta in clear bins you can read at a glance. A masala dabba zone within arm's reach of the stove. Monthly groceries unpacked in minutes.</p><span class="price">from ₹5,999 / kitchen</span></div>
+        <div class="row"><span class="n">2.3</span><h3>Whole-home declutter</h3><p class="desc">Room by room, including the store room, the pooja shelf and the "everything" drawer. Ideal before Diwali, a new baby, or guests arriving.</p><span class="price">from ₹9,999 / day</span></div>
+        <div class="row"><span class="n">2.4</span><h3>New home setup</h3><p class="desc">Unpack and organise your new flat in 2 to 3 days. Walk in to a home that already works, with a storage shopping list for what's missing.</p><span class="price">from ₹14,999 / 2BHK</span></div>
+      </div>
+    </section>
+
+    <section id="quote">
+      <span class="tape">Drawer 03 · Instant quote</span>
+      <h2 style="margin-top:18px">Your exact price, printed</h2>
+      <p class="lead" style="margin-top:16px">Pick what you need. The receipt updates live and shows travel as its own line so you can see there's nothing hidden.</p>
+      <div class="quote">
+        <div class="qform">
+          <fieldset>
+            <legend>What should I organise?</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="svc" value="wardrobe" checked><span>Wardrobes</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="kitchen"><span>Kitchen &amp; pantry</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="home"><span>Whole-home days</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="move"><span>New home setup</span></label>
+            </div>
+          </fieldset>
+          <fieldset id="fs-wardrobe">
+            <legend>How many wardrobes?</legend>
+            <div class="stepper"><button type="button" data-dec="n-wardrobe" aria-label="Fewer wardrobes">−</button><output id="n-wardrobe">1</output><button type="button" data-inc="n-wardrobe" aria-label="More wardrobes">+</button><span class="hint">2nd onwards ₹2,999 each</span></div>
+          </fieldset>
+          <fieldset id="fs-home" hidden>
+            <legend>How many days?</legend>
+            <div class="stepper"><button type="button" data-dec="n-home" aria-label="Fewer days">−</button><output id="n-home">2</output><button type="button" data-inc="n-home" aria-label="More days">+</button><span class="hint">2BHK ≈ 2 days · 3BHK ≈ 3 days</span></div>
+          </fieldset>
+          <fieldset id="fs-move" hidden>
+            <legend>Home size</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="bhk" value="1"><span>1BHK <small>₹9,999</small></span></label>
+              <label class="chip"><input type="radio" name="bhk" value="2" checked><span>2BHK <small>₹14,999</small></span></label>
+              <label class="chip"><input type="radio" name="bhk" value="3"><span>3BHK <small>₹21,999</small></span></label>
+              <label class="chip"><input type="radio" name="bhk" value="4"><span>4BHK+ <small>₹28,999</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Where in Hyderabad?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="zone" value="in" checked><span>Inside ORR <small>travel free</small></span></label>
+              <label class="chip"><input type="radio" name="zone" value="out"><span>Outside ORR <small>₹15/km</small></span></label>
+            </div>
+            <div class="stepper" id="km-row" hidden><button type="button" data-dec="n-km" aria-label="Fewer km">−</button><output id="n-km">10</output><button type="button" data-inc="n-km" aria-label="More km">+</button><span class="hint">km beyond ORR, one way</span></div>
+          </fieldset>
+        </div>
+        <div class="receipt" aria-live="polite">
+          <div class="head"><b>PIN &amp; PLACE</b><span>Hyderabad · Secunderabad</span><span id="r-date"></span></div>
+          <div class="lines" id="q-lines"></div>
+          <div class="total"><span>TOTAL, ALL IN</span><span id="q-total">₹3,499</span></div>
+          <p class="meta" id="q-time">About 3 hours on site, 1 visit.</p>
+          <p class="meta">Boxes and organisers optional, at actual cost with bills. Price fixed once agreed on the free consult call.</p>
+          <div class="btns">
+            <a class="btn btn-wa" id="q-wa" href="#" target="_blank" rel="noopener">Book this on WhatsApp</a>
+            <a class="btn btn-ghost" href="#book">Or send a booking request</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promise">
+      <span class="tape alt">Drawer 04 · The Pin &amp; Place Promise</span>
+      <h2 style="margin-top:18px">Two things nobody else in Hyderabad puts in writing</h2>
+      <div class="promise">
+        <div><h3>30-day fix, free.</h3><p>If any system I set up isn't working for your family within 30 days, I come back for a one-hour touch-up at no charge. No arguments.</p></div>
+        <div><h3>The price you see is the price you pay.</h3><p>Travel inside ORR included. No "assessment fee", no per-hour creep. If the job runs long because I estimated wrong, that's on me.</p></div>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <span class="tape">Drawer 05 · Clutter check</span>
+      <h2 style="margin-top:18px">Not sure where to start? Thirty seconds.</h2>
+      <div class="quiz" id="quiz-box">
+        <div class="q"><p>1. Which space bothers you most?</p>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="q1" value="wardrobe"><span>Wardrobe</span></label>
+            <label class="chip"><input type="radio" name="q1" value="kitchen"><span>Kitchen</span></label>
+            <label class="chip"><input type="radio" name="q1" value="home"><span>Honestly, everywhere</span></label>
+            <label class="chip"><input type="radio" name="q1" value="move"><span>I just moved / am moving</span></label>
+          </div></div>
+        <div class="q"><p>2. How long does finding something usually take?</p>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="q2" value="1"><span>Under a minute</span></label>
+            <label class="chip"><input type="radio" name="q2" value="2"><span>A few minutes of digging</span></label>
+            <label class="chip"><input type="radio" name="q2" value="3"><span>I buy it again instead</span></label>
+          </div></div>
+        <div class="q"><p>3. When did you last declutter?</p>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="q3" value="1"><span>This year</span></label>
+            <label class="chip"><input type="radio" name="q3" value="2"><span>Before the last Diwali</span></label>
+            <label class="chip"><input type="radio" name="q3" value="3"><span>Can't remember</span></label>
+          </div></div>
+        <div class="quiz-out" id="quiz-out">
+          <b id="quiz-title"></b>
+          <p id="quiz-text"></p>
+          <a class="btn" href="#quote" style="justify-self:start;margin-top:6px">See the price</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="founding">
+      <span class="tape alt">Drawer 06 · Founding clients</span>
+      <div class="founding">
+        <div>
+          <h2>First 10 Hyderabad homes get 15% off</h2>
+          <p>I'm new to doing this professionally, so I'm being upfront about it. The first ten homes get 15% off any package in exchange for an honest review and before/after photos (faces and addresses never shown). You get a lower price; I get proof. Fair trade.</p>
+          <a class="btn" href="#book">Claim a founding slot</a>
+        </div>
+        <div class="slots"><span>Slots left</span><b id="slots-left">10</b><span>Updated by hand after each booking</span></div>
+      </div>
+    </section>
+
+    <section id="how">
+      <span class="tape">Drawer 07 · How it works</span>
+      <h2 style="margin-top:18px">From message to tidy in four steps</h2>
+      <div class="steps">
+        <div class="step"><span class="n">STEP 1</span><h3>Send photos</h3><p>WhatsApp 3 or 4 photos of the space. Don't tidy first; messy photos help me plan.</p></div>
+        <div class="step"><span class="n">STEP 2</span><h3>Free 20-min call</h3><p>We lock the price from the receipt, pick a date, and I ask about your routine.</p></div>
+        <div class="step"><span class="n">STEP 3</span><h3>Session day</h3><p>I bring labels, bags and tools. You make the keep / go calls; I do the rest. Leave for work if you like.</p></div>
+        <div class="step"><span class="n">STEP 4</span><h3>Keep it tidy</h3><p>One-page routine on your fridge, two weeks of WhatsApp support, and the 30-day free fix.</p></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <span class="tape">Drawer 08 · FAQ</span>
+      <h2 style="margin-top:18px">Questions people ask before booking</h2>
+      <div class="faq">
+        <details><summary>Do I need to be home during the session?</summary><p>For the first hour, yes, so we decide together what stays. After that you can leave. Many clients go to work and come back to a finished space.</p></details>
+        <details><summary>Will you throw my things away?</summary><p>Never without you. You make every keep / donate / discard decision. I only make it faster by sorting everything into categories first.</p></details>
+        <details><summary>Do I need to buy boxes and organisers?</summary><p>Usually not for the first session. I work with what you have. If something would really help, I suggest it, you approve it, and I buy it at actual cost with the bill.</p></details>
+        <details><summary>What areas do you cover?</summary><p>All of Hyderabad and Secunderabad. Inside the Outer Ring Road, travel is included. Beyond ORR, it's ₹15 per km each way, shown on the receipt before you book.</p></details>
+        <details><summary>How is this different from a cleaning service?</summary><p>Cleaners make a space clean; I make it work. We decide what you own, where it lives, and how it stays that way. Light dusting happens as a side effect.</p></details>
+        <details><summary>Do you do offices or kids' rooms?</summary><p>Kids' rooms, yes, and they're some of my favourites. Small home offices, yes. Commercial offices, not right now.</p></details>
+        <details><summary>How do I pay?</summary><p>UPI or bank transfer. 20% to confirm the date, the rest on the day after the work is done.</p></details>
+      </div>
+    </section>
+
+    <section id="book">
+      <span class="tape">Drawer 09 · Book</span>
+      <h2 style="margin-top:18px">Book a free consult</h2>
+      <p class="lead" style="margin-top:16px">Fill this in and it drafts a WhatsApp message to me with your details. Or just call.</p>
+      <div class="book">
+        <form class="bk" id="bookform" novalidate>
+          <label class="f">Your name <input id="f-name" name="name" type="text" required autocomplete="name"></label>
+          <div class="two">
+            <label class="f">Phone / WhatsApp <input id="f-phone" name="phone" type="tel" required autocomplete="tel"></label>
+            <label class="f">Area in Hyderabad <input id="f-area" name="area" type="text" placeholder="e.g. Kondapur" required></label>
+          </div>
+          <label class="f">Service
+            <select id="f-service" name="service">
+              <option>Wardrobe &amp; closet</option><option>Kitchen &amp; pantry</option><option>Whole-home declutter</option><option>New home setup</option><option>Not sure yet</option>
+            </select>
+          </label>
+          <label class="f">Preferred dates <input id="f-dates" name="dates" type="text" placeholder="e.g. any weekend in October"></label>
+          <label class="f">Anything I should know? <textarea id="f-notes" name="notes" placeholder="Size of the space, what bothers you most, pets, kids..."></textarea></label>
+          <button class="btn" type="submit">Draft my WhatsApp message</button>
+          <div class="result" id="result" aria-live="polite">
+            <strong>Your message is ready</strong>
+            <pre id="msg"></pre>
+            <div class="btns">
+              <a class="btn btn-wa" id="send-wa" href="#" target="_blank" rel="noopener">Open in WhatsApp</a>
+              <button class="btn btn-ghost" type="button" id="copy-msg">Copy message</button>
+            </div>
+            <p style="color:var(--ink-soft);font-size:.9rem">If WhatsApp doesn't open, copy the message and send it to the number shown here.</p>
+          </div>
+        </form>
+        <div class="contact">
+          <div><span class="k">WhatsApp &amp; calls</span><span class="val" id="phone-val">+91 XXXXX XXXXX</span><button class="btn btn-ghost copy" type="button" data-copy="phone-val">Copy number</button></div>
+          <div><span class="k">Service area</span><span class="val">Hyderabad &amp; Secunderabad</span><p>Travel inside ORR included. Beyond ORR, ₹15/km each way, shown before you book.</p></div>
+          <div><span class="k">Hours</span><span class="val">Mon to Sat, 9am to 6pm</span><p>Sunday sessions on request. I reply on WhatsApp within 2 hours during the day.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 PIN &amp; PLACE · HOME ORGANISING, HYDERABAD</span>
+    <span>SERVING ALL OF HYDERABAD &amp; SECUNDERABAD</span>
+  </footer>
+</div>
+
+<div class="bar">
+  <a class="btn" href="#quote">See my price</a>
+  <a class="btn btn-wa" id="bar-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+// ===== EDIT THESE WITH YOUR REAL DETAILS =====
+const WHATSAPP_NUMBER = "917397277611";      // country code + number, digits only, e.g. "919876543210"
+const FOUNDING_SLOTS_LEFT = 10;              // lower this by hand after each founding booking
+// Prices (₹). Travel inside ORR (~₹400 per visit) is already baked into each.
+const PRICE = { wardrobe1: 3499, wardrobeN: 2999, kitchen: 5999, homeDay: 9999, move: {1: 9999, 2: 14999, 3: 21999, 4: 28999}, perKm: 15 };
+// ==============================================
+
+(function(){
+  const $ = id => document.getElementById(id);
+  const waBase = "https://wa.me/" + WHATSAPP_NUMBER;
+  const hello = encodeURIComponent("Hi! I found the Pin & Place website and I'd like to book a free consult.");
+  ["hero-wa","bar-wa","rail-wa"].forEach(id => $(id).href = waBase + "?text=" + hello);
+  $("slots-left").textContent = FOUNDING_SLOTS_LEFT;
+  $("r-date").textContent = new Date().toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}).toUpperCase();
+  if(!/X/.test(WHATSAPP_NUMBER)){ const n = WHATSAPP_NUMBER.replace(/^91/, ""); $("phone-val").textContent = "+91 " + n.slice(0,5) + " " + n.slice(5); }
+  const inr = n => "₹" + n.toLocaleString("en-IN");
+
+  const ba = $("ba"), range = $("ba-range");
+  range.addEventListener("input", () => ba.style.setProperty("--cut", range.value + "%"));
+
+  const counts = { "n-wardrobe": [1,1,12], "n-home": [2,1,10], "n-km": [10,1,80] };
+  document.querySelectorAll("[data-inc],[data-dec]").forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.inc || b.dataset.dec, c = counts[id];
+    c[0] = Math.min(c[2], Math.max(c[1], c[0] + (b.dataset.inc ? 1 : -1)));
+    $(id).textContent = c[0]; calc();
+  }));
+
+  function calc(){
+    const svc = [...document.querySelectorAll('input[name="svc"]:checked')].map(i => i.value);
+    $("fs-wardrobe").hidden = !svc.includes("wardrobe");
+    $("fs-home").hidden = !svc.includes("home");
+    $("fs-move").hidden = !svc.includes("move");
+    const out = document.querySelector('input[name="zone"]:checked').value === "out";
+    $("km-row").hidden = !out;
+    const lines = []; let total = 0, hours = 0;
+    if(svc.includes("wardrobe")){ const n = counts["n-wardrobe"][0]; const amt = PRICE.wardrobe1 + (n-1)*PRICE.wardrobeN; lines.push([n + (n>1?" WARDROBES":" WARDROBE"), amt]); total += amt; hours += 3*n; }
+    if(svc.includes("kitchen")){ lines.push(["KITCHEN & PANTRY", PRICE.kitchen]); total += PRICE.kitchen; hours += 5; }
+    if(svc.includes("home")){ const n = counts["n-home"][0]; const amt = n*PRICE.homeDay; lines.push([n + " WHOLE-HOME " + (n>1?"DAYS":"DAY"), amt]); total += amt; hours += 6*n; }
+    if(svc.includes("move")){ const b = document.querySelector('input[name="bhk"]:checked').value; const amt = PRICE.move[b]; lines.push([b + "BHK NEW HOME SETUP", amt]); total += amt; hours += (b<=1?8:b==2?14:b==3?20:26); }
+    const visits = Math.max(1, Math.ceil(hours/6));
+    if(out){ const t = counts["n-km"][0] * 2 * PRICE.perKm * visits; lines.push(["TRAVEL BEYOND ORR " + counts["n-km"][0] + "KM×2×" + visits, t]); total += t; }
+    else lines.push(["TRAVEL INSIDE ORR", "INCLUDED"]);
+    $("q-lines").innerHTML = lines.map(l => "<div><span>" + l[0] + "</span><span" + (l[1]==="INCLUDED"?' class="inc"':"") + ">" + (typeof l[1]==="number"? inr(l[1]) : l[1]) + "</span></div>").join("");
+    $("q-total").textContent = svc.length ? inr(total) : "₹0";
+    $("q-time").textContent = svc.length ? "About " + hours + " hours on site, " + visits + (visits>1?" visits.":" visit.") : "Pick at least one service.";
+    const txt = "Hi! I used the instant quote on the Pin & Place site.\n" + lines.map(l => l[0] + ": " + (typeof l[1]==="number"? inr(l[1]) : l[1])).join("\n") + "\nTotal: " + inr(total) + "\nI'd like to book a free consult.";
+    $("q-wa").href = waBase + "?text=" + encodeURIComponent(txt);
+  }
+  document.querySelectorAll('#quote input').forEach(i => i.addEventListener("change", calc));
+  calc();
+
+  const rec = {
+    wardrobe: ["Start with a Wardrobe reset", "One wardrobe, about 3 hours, ₹3,499. The fastest win, and mornings get easier the same day."],
+    kitchen:  ["Start with Kitchen & pantry", "About 5 hours, ₹5,999. The most-booked package, and the one families notice every single day."],
+    home:     ["Book a Whole-home declutter", "₹9,999 per day, usually 2 days for a 2BHK. We go room by room and nothing gets skipped."],
+    move:     ["You want New home setup", "From ₹14,999 for a 2BHK. Unpacked, placed and labelled in 2 days, so you never live out of boxes."]
+  };
+  function quiz(){
+    const a1 = document.querySelector('input[name="q1"]:checked'), a2 = document.querySelector('input[name="q2"]:checked'), a3 = document.querySelector('input[name="q3"]:checked');
+    if(!(a1 && a2 && a3)) return;
+    const r = rec[a1.value]; const sev = +a2.value + +a3.value;
+    $("quiz-title").textContent = r[0];
+    $("quiz-text").textContent = r[1] + (sev >= 5 ? " Given how long it's been, budget for one extra session day; I'll confirm on the consult call." : "");
+    $("quiz-out").classList.add("show");
+    document.querySelectorAll('input[name="svc"]').forEach(i => i.checked = (i.value === a1.value)); calc();
+  }
+  document.querySelectorAll('#quiz-box input').forEach(i => i.addEventListener("change", quiz));
+
+  const form = $("bookform"), result = $("result"), msgEl = $("msg");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const v = id => $(id).value.trim();
+    if(!v("f-name") || !v("f-phone") || !v("f-area")){ form.reportValidity(); return; }
+    const lines = ["Hi, I'd like to book a free consult with Pin & Place.","Name: " + v("f-name"),"Phone: " + v("f-phone"),"Area: " + v("f-area"),"Service: " + v("f-service"), v("f-dates") ? "Preferred dates: " + v("f-dates") : "", v("f-notes") ? "Notes: " + v("f-notes") : ""].filter(Boolean);
+    const text = lines.join("\n");
+    msgEl.textContent = text;
+    $("send-wa").href = waBase + "?text=" + encodeURIComponent(text);
+    result.classList.add("show");
+    result.scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
+
+  function copyText(text, btn){
+    const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => btn.textContent = o, 1500); };
+    const fallback = () => { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); done(); }catch(_){} document.body.removeChild(ta); };
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(fallback); else fallback();
+  }
+  $("copy-msg").addEventListener("click", e => copyText(msgEl.textContent, e.currentTarget));
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", e => copyText($(b.dataset.copy).textContent, e.currentTarget)));
+})();
+</script>
+</body></html>
